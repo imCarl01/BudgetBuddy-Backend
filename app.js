@@ -100,7 +100,7 @@ app.post("/forgot-password", async(req,res)=>{
         }
         const secret = JWT_SECERT + oldUser.password;
         const token = jwt.sign({email: oldUser.email, id: oldUser._id},secret,{expiresIn:"5m"});
-        const link = `http://localhost:3000/reset-password/${oldUser._id}/${token}`;
+        const link = `https://budgetbuddy1-j5q67ysm.b4a.run/reset-password/${oldUser._id}/${token}`;
 
         var transporter = nodemailer.createTransport({
             service: 'gmail',
