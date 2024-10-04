@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 // const monogoURL = process.env.MONOG_DB_URL
-const monogoURL = process.env.MONOG_DB_URL
+const monogoURL = "mongodb+srv://imcarl0uc:adminPassword@budgetbuddy.qnomn.mongodb.net/?retryWrites=true&w=majority&appName=BudgetBuddy"
 
 const JWT_SECERT = process.env.JWT_SECERT_CODE
 mongoose.connect(monogoURL)
