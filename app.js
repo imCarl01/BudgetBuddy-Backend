@@ -9,7 +9,7 @@ var nodemailer = require('nodemailer');
 
 app.set("view engine","ejs"); // for the reset password
 
-const port = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(express.json());  
 app.use(express.urlencoded({ extended: true })); 
@@ -99,7 +99,7 @@ app.post("/forgot-password", async(req,res)=>{
         }
         const secret = JWT_SECERT + oldUser.password;
         const token = jwt.sign({email: oldUser.email, id: oldUser._id},secret,{expiresIn:"5m"});
-        const link = `http://localhost:3000/reset-password/${oldUser._id}/${token}`;
+        const link = `http://${process.env.HEROKU_APP_NAME}.herokuapp.com/reset-password/${oldUser._id}/${token}`;
 
         var transporter = nodemailer.createTransport({
             service: 'gmail',
@@ -184,6 +184,6 @@ app.post("/reset-password/:id/:token",async(req,res)=>{
 })
 
 
-app.listen(port, (req,res)=>{
-    console.log(`App is running on port ${port}`)
+app.listen(PORT, (req,res)=>{
+    console.log(`App is running on port ${PORT}`)
 })
