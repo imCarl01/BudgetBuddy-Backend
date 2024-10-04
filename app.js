@@ -15,7 +15,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true })); 
 
 
-const monogoURL = process.env.MONOG_DB_URL
+// const monogoURL = process.env.MONOG_DB_URL
+const monogoURL = "mongodb+srv://imcarl0uc:adminPassword@budgetbuddy.qnomn.mongodb.net/?retryWrites=true&w=majority&appName=BudgetBuddy"
 
 const JWT_SECERT = process.env.JWT_SECERT_CODE
 mongoose.connect(monogoURL)
@@ -99,7 +100,7 @@ app.post("/forgot-password", async(req,res)=>{
         }
         const secret = JWT_SECERT + oldUser.password;
         const token = jwt.sign({email: oldUser.email, id: oldUser._id},secret,{expiresIn:"5m"});
-        const link = `http://${process.env.HEROKU_APP_NAME}.herokuapp.com/reset-password/${oldUser._id}/${token}`;
+        const link = `http://localhost:3000/reset-password/${oldUser._id}/${token}`;
 
         var transporter = nodemailer.createTransport({
             service: 'gmail',
