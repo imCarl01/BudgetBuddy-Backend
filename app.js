@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 // const monogoURL = process.env.MONOG_DB_URL
 const monogoURL = "mongodb+srv://imcarl0uc:adminPassword@budgetbuddy.qnomn.mongodb.net/?retryWrites=true&w=majority&appName=BudgetBuddy"
 
-const JWT_SECERT = process.env.JWT_SECERT_CODE
+const JWT_SECERT = "hvdvay6ert72839289()aiyg8t87qt72393293883uhefiuh78ttq3ifi78272jdsds039[]]pou89ywe"
 mongoose.connect(monogoURL)
 .then(()=>{
     console.log("DataBase Connected");
