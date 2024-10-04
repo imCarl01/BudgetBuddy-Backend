@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require("mongoose")
 const bcrypt = require ("bcryptjs")
 const jwt = require("jsonwebtoken")
+const path = require("path")
 require("dotenv").config();
 
 var nodemailer = require('nodemailer');
@@ -13,6 +14,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());  
 app.use(express.urlencoded({ extended: true })); 
+app.use(express.static(path.join(__dirname, "public")));
 
 
 // const monogoURL = process.env.MONOG_DB_URL
